@@ -25,7 +25,7 @@ public class UserService {
 	}
 	
 	/**
-	 * Retrieves a User by its unique identifier.
+	 * Retrieves an User by its unique identifier.
 	 *
 	 * @param id the ID of the user to be retrieved
 	 * @return the User entity corresponding to the given ID
