@@ -52,4 +52,27 @@ public class UserService {
 		repository.deleteById(id);
 	}
 	
+	/**
+	 * Updates an existing user's information.
+	 * * @param id The unique identifier of the user to be updated.
+	 * @param obj The object containing the updated data.
+	 * @return The updated and persisted user entity.
+	 */
+	public User update(Long id, User obj) {
+		User entity = repository.getReferenceById(id);
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+
+	/**
+	 * Updates the data of an existing user entity with information from a new object.
+	 * * @param entity The existing entity currently managed by the persistence context.
+	 * @param obj The object containing the new data to be applied.
+	 */
+	private void updateData(User entity, User obj) {
+		entity.setName(obj.getName());
+		entity.setEmail(obj.getEmail());
+		entity.setPhone(obj.getPhone());
+	}
+	
 }
