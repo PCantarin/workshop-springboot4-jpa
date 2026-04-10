@@ -44,4 +44,12 @@ public class UserService {
 		return repository.save(obj);
 	}
 	
+	/**
+	 * Deletes an user from the database.
+	 * * @param id The id of the user that will be deleted.
+	 */
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
+	
 }
