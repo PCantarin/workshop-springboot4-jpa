@@ -36,7 +36,7 @@ public class OrderItem implements Serializable{
 		return id.getOrder();
 	}
 	
-	public void serOrder(Order order) {
+	public void setOrder(Order order) {
 		id.setOrder(order);
 	}
 	
@@ -62,6 +62,10 @@ public class OrderItem implements Serializable{
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+	
+	public Double getSubTotal() {
+		return price * quantity;
 	}
 
 	@Override
