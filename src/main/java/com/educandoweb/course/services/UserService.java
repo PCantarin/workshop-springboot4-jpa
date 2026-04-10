@@ -35,4 +35,13 @@ public class UserService {
 		return obj.get();
 	}
 	
+	/**
+	 * Persists a new user into the database.
+	 * * @param obj The user entity to be saved.
+	 * @return The saved user entity, including the generated primary key.
+	 */
+	public User insert(User obj) {
+		return repository.save(obj);
+	}
+	
 }
