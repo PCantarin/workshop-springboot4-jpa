@@ -12,6 +12,8 @@ import com.educandoweb.course.repositories.UserRepository;
 import com.educandoweb.course.services.exceptions.DatabaseException;
 import com.educandoweb.course.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class UserService {
 
@@ -28,10 +30,11 @@ public class UserService {
 	}
 
 	/**
-	 * Retrieves an User by its unique identifier.
+	 * Retrieves a user by their unique identifier.
 	 *
-	 * @param id the ID of the user to be retrieved
-	 * @return the User entity corresponding to the given ID
+	 * @param id The ID of the user to be retrieved.
+	 * @return The user entity corresponding to the given ID.
+	 * @throws ResourceNotFoundException If no user is found with the given ID.
 	 */
 	public User findById(Long id) {
 		Optional<User> obj = repository.findById(id);
@@ -48,9 +51,12 @@ public class UserService {
 	}
 
 	/**
-	 * Deletes an user from the database.
-	 * * @param id The id of the user that will be deleted.
-	 */
+     * Deletes a user from the database by their ID.
+     *
+     * @param id The ID of the user to be deleted.
+     * @throws ResourceNotFoundException If the user is not found.
+     * @throws DatabaseException If the deletion violates database constraints.
+     */
 	public void delete(Long id) {
 		repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
 		try {
@@ -61,15 +67,21 @@ public class UserService {
 	}
 
 	/**
-	 * Updates an existing user's information.
-	 * * @param id The unique identifier of the user to be updated.
-	 * @param obj The object containing the updated data.
-	 * @return The updated and persisted user entity.
-	 */
+     * Updates an existing user's information.
+     *
+     * @param id The unique identifier of the user to be updated.
+     * @param obj The object containing the updated data.
+     * @return The updated and persisted user entity.
+     * @throws ResourceNotFoundException If no user is found with the given ID.
+     */
 	public User update(Long id, User obj) {
-		User entity = repository.getReferenceById(id);
-		updateData(entity, obj);
-		return repository.save(entity);
+		try {
+			User entity = repository.getReferenceById(id);
+			updateData(entity, obj);
+			return repository.save(entity);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
 	}
 
 	/**
