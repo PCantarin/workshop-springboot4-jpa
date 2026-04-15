@@ -7,7 +7,7 @@ Esta é uma API web desenvolvida para simular o backend de um **sistema de venda
 
 Desenvolvido durante o curso de Java Completo do professor [Nélio Alves](https://github.com/acenelio), o projeto aplica conceitos avançados de orientação a objetos e mapeamento objeto-relacional (ORM).
 
-##Funcionalidades Principais
+## Funcionalidades Principais
 
 ### Gestão de Usuários
 - **CRUD Completo:** Consulta, inserção, atualização e deleção de usuários.
