@@ -3,7 +3,7 @@
 
 # Sobre o Projeto
 
-Esta é uma API REST desenvolvida para simular o backend de um **sistema de vendas**. O projeto foca na implementação da arquitetura em camadas e na persistência de objetos complexos em bancos de dados relacionais.
+Esta é uma API web desenvolvida para simular o backend de um **sistema de vendas**. O projeto foca na implementação da arquitetura em camadas e na persistência de objetos complexos em bancos de dados relacionais.
 
 Desenvolvido durante o curso de Java Completo do professor [Nélio Alves](https://github.com/acenelio), o projeto aplica conceitos avançados de orientação a objetos e mapeamento objeto-relacional (ORM).
 
