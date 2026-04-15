@@ -4,18 +4,20 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.educandoweb.course.entities.User;
 import com.educandoweb.course.repositories.UserRepository;
+import com.educandoweb.course.services.exceptions.DatabaseException;
 import com.educandoweb.course.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
-	
+
 	@Autowired
 	private UserRepository repository;
-	
+
 	/**
 	 * Retrieves all users registered in the database.
 	 *
@@ -24,7 +26,7 @@ public class UserService {
 	public List<User> findAll(){
 		return repository.findAll();
 	}
-	
+
 	/**
 	 * Retrieves an User by its unique identifier.
 	 *
@@ -35,7 +37,7 @@ public class UserService {
 		Optional<User> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
-	
+
 	/**
 	 * Persists a new user into the database.
 	 * * @param obj The user entity to be saved.
@@ -44,15 +46,20 @@ public class UserService {
 	public User insert(User obj) {
 		return repository.save(obj);
 	}
-	
+
 	/**
 	 * Deletes an user from the database.
 	 * * @param id The id of the user that will be deleted.
 	 */
 	public void delete(Long id) {
-		repository.deleteById(id);
+		repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+		try {
+			repository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseException(e.getMessage());
+		}
 	}
-	
+
 	/**
 	 * Updates an existing user's information.
 	 * * @param id The unique identifier of the user to be updated.
@@ -75,5 +82,5 @@ public class UserService {
 		entity.setEmail(obj.getEmail());
 		entity.setPhone(obj.getPhone());
 	}
-	
+
 }
