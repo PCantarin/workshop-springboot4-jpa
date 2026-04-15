@@ -39,3 +39,19 @@ O projeto segue o padrão de **Camadas**, garantindo separação de responsabili
 ## Modelo de Domínio
 
 ![Domain Model](https://github.com/PCantarin/workshop-springboot4-jpa/blob/main/assets/domain_model.png)
+
+# Como executar o projeto
+
+Pré-requisitos: Java 21
+```bash
+# clonar o repositório
+git clone https://github.com/PCantarin/workshop-springboot4-jpa
+
+# executar o projeto
+./mvnw spring-boot:run
+```
+
+# Autor
+Pedro Henrique Silva Cantarin
+
+https://www.linkedin.com/in/pedro-cantarin-249377227
