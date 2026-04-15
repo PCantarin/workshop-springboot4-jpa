@@ -33,7 +33,7 @@ O projeto segue o padrão de **Camadas**, garantindo separação de responsabili
 - **Linguagem:** Java 21
 - **Framework:** Spring Boot 4
 - **Persistência:** Spring Data JPA / Hibernate
-- **Banco de Dados:** H2 (Testes/Dev) e PostgreSQL (Produção)
+- **Banco de Dados:** H2 (Testes/Dev)
 - **Gerenciador de Dependências:** Maven
 
 ## Modelo de Domínio
