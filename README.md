@@ -38,9 +38,4 @@ O projeto segue o padrão de **Camadas**, garantindo separação de responsabili
 
 ## Modelo de Domínio
 
-
-## Como Executar
-
-1. Clone o repositório:
-   ```bash
-   git clone [https://github.com/PCantarin/workshop-springboot4-jpa.git](https://github.com/PCantarin/workshop-springboot4-jpa.git)
+![Domain Model](https://github.com/PCantarin/workshop-springboot4-jpa/blob/main/assets/domain_model.png)
